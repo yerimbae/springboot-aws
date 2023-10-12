@@ -1,0 +1,22 @@
+plugins {
+  id 'java'
+  id 'org.springframework.boot' version '3.0.5'
+  id 'io.spring.dependency-management' version '1.1.0'
+}
+
+group 'com.rimi.book'
+version '1.0.4-SNAPSHOT-'+new Date().format("yyyyMMddHHmmss")
+sourceCompatibility = '17'
+
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+  //spring boot
+  implementation('org.springframework.boot:spring-boot-starter-web')
+
+  //JUnit
+  testImplementation('org.springframework.boot:spring-boot-starter-test')
+
+}
