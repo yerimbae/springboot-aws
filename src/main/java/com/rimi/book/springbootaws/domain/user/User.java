@@ -8,6 +8,9 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
+@Table(name = "tblUser")
+//Error executing DDL "drop table if exists user" via JDBC Statement / expected "identifier"
+//to assure the unique key "user" set table name as "tblUser"
 @Entity
 public class User extends BaseTimeEntity {
 

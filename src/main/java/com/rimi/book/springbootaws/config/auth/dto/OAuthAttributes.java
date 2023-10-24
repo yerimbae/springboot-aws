@@ -10,14 +10,14 @@ import java.util.Objects;
 
 @Getter
 public class OAuthAttributes {
-    private Map<String, Objects> attributes;
+    private Map<String, Object> attributes;
     private String nameAttributeKey;
     private String name;
     private String email;
     private String picture;
 
     @Builder
-    public OAuthAttributes(Map<String,Objects> attributes,
+    public OAuthAttributes(Map<String,Object> attributes,
                           String nameAttributeKey, String name, String email, String picture){
         this.attributes = attributes;
         this.nameAttributeKey = nameAttributeKey;
@@ -27,15 +27,16 @@ public class OAuthAttributes {
     }
 
     public static OAuthAttributes of(String registrationId,
-                                     String userNameAttributeName, Map<String,Objects> attributes){
+                                     String userNameAttributeName, Map<String,Object> attributes){
         return ofGoogle(userNameAttributeName,attributes);
     }
 
-    private static OAuthAttributes ofGoogle(String userNameAttributeName, Map<String,Objects> attributes){
+    private static OAuthAttributes ofGoogle(String userNameAttributeName, Map<String,Object> attributes){
         return OAuthAttributes.builder()
-                .name((String) attributes.get("name"))
-                .email((String) attributes.get("email"))
-                .picture((String) attributes.get("picture"))
+                .name(String.valueOf(attributes.get("name")))
+                //checkpoint > (String) attributes.get("name") 사용시 오류 발생
+                .email(String.valueOf(attributes.get("email")))
+                .picture(String.valueOf(attributes.get("picture")))
                 .attributes(attributes)
                 .nameAttributeKey(userNameAttributeName)
                 .build();
