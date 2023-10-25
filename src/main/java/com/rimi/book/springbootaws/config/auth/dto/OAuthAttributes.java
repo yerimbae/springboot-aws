@@ -49,10 +49,10 @@ public class OAuthAttributes {
         Map<String,Object> response = (Map<String, Object>) attributes.get("response");
 
         return OAuthAttributes.builder()
-                .name(String.valueOf(attributes.get("name")))
+                .name(String.valueOf(response.get("name")))
                 //checkpoint > (String) attributes.get("name") 사용시 오류 발생
-                .email(String.valueOf(attributes.get("email")))
-                .picture(String.valueOf(attributes.get("profile_image")))
+                .email(String.valueOf(response.get("email")))
+                .picture(String.valueOf(response.get("profile_image")))
                 .attributes(response)
                 .nameAttributeKey(userNameAttributeName)
                 .build();
