@@ -19,3 +19,8 @@
     email:
       recipients:
         - primyerim98@gmail.com
+
+
+  #gradlew 파일 권한 문제
+  before_install:
+    - chmod +x gradlew
